@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aura & Roast Artisanal Coffee - Ethically sourced micro-lot beans, handcrafted espresso, signature cold brews, and fresh house pastries.">
+  <title>Aura & Roast | Artisanal Coffee & Roastery</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div class="top-bar-info">
+        <div class="top-bar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>442 Roaster's Way, Arts District</span>
+        </div>
+        <div class="top-bar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span id="header-hours-text">Mon - Sun: 7:00 AM - 8:00 PM</span>
+        </div>
+      </div>
+      <div id="live-status-pill" class="live-pill">
+        <span class="live-dot" id="live-status-dot"></span>
+        <span id="live-status-text">Checking hours...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="site-header">
+    <div class="container header-container">
+      <a href="#home" class="logo" aria-label="Aura and Roast Home">
+        <div class="logo-icon">
+          <!-- Coffee Cup & Steam SVG -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        <span>Aura &amp; Roast</span>
+      </a>
+
+      <!-- Desktop & Mobile Nav Links -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">Our Story</a>
+        <a href="#menu" class="nav-link">Menu</a>
+        <a href="#process" class="nav-link">Craft</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#visit" class="nav-link">Visit Us</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-sm" id="open-reserve-btn">
+          Reserve Table
+        </button>
+
+        <button class="cart-btn" id="open-cart-btn" aria-label="View Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count" id="cart-counter">0</span>
+        </button>
+
+        <button class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill">
+            <span>✨</span> Daily Special: Ethiopian Yirgacheffe Natural Process
+          </div>
+          <h1 class="hero-title">
+            Crafted with passion, <span>brewed</span> to your perfection.
+          </h1>
+          <p class="hero-desc">
+            Welcome to Aura &amp; Roast. We partner directly with sustainable high-altitude farmers to handcraft small-batch roasts, sensory pour-overs, and unforgettable coffee moments in the heart of the city.
+          </p>
+          <div class="hero-actions">
+            <a href="#menu" class="btn btn-primary">
+              <span>Explore Menu</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <button class="btn btn-secondary" id="hero-order-btn">
+              Order Ahead
+            </button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <h4>100%</h4>
+              <p>Specialty Arabica</p>
+            </div>
+            <div class="stat-item">
+              <h4>14+</h4>
+              <p>Direct-Trade Origins</p>
+            </div>
+            <div class="stat-item">
+              <h4>4.9 ★</h4>
+              <p>Over 1,200 Reviews</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1000&q=80" alt="Barista pouring artisanal latte art" loading="eager">
+          </div>
+          <div class="hero-badge-floating">
+            <div class="floating-badge-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <div class="floating-badge-text">
+              <h5>Award-Winning Roaster</h5>
+              <p>National Roasters Guild 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Highlight Bar -->
+  <section class="features-bar">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+          </div>
+          <div class="feature-info">
+            <h4>Ethical Direct Trade</h4>
+            <p>Fair compensation paid directly to micro-lot coffee growers.</p>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <div class="feature-info">
+            <h4>Micro-Batch Roasting</h4>
+            <p>Roasted weekly on our custom drum roaster for unmatched freshness.</p>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20v-6M6 20V10M18 20V4"></path></svg>
+          </div>
+          <div class="feature-info">
+            <h4>Precision Brew Lab</h4>
+            <p>Temp-controlled espresso profiles and TDS calibrated extraction.</p>
+          </div>
+        </div>
+
+        <div class="feature-box">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <div class="feature-info">
+            <h4>Artisan Bakehouse</h4>
+            <p>Cultured butter croissants and pastries baked fresh each morning.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual-stacked">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80" alt="Coffee roasting machine" class="about-img-main" loading="lazy">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Pour over coffee being prepared" class="about-img-sub" loading="lazy">
+        </div>
+        
+        <div class="about-content">
+          <span class="section-tag">Our Philosophy</span>
+          <h2>A dedication to the journey from seed to cup.</h2>
+          <p>
+            Founded in 2021 by a collective of passionate baristas and roasters, Aura &amp; Roast was born out of a desire to create a sanctuary where coffee is not merely a morning utility, but a mindful ritual.
+          </p>
+          <p>
+            Every single bean in our shop is sourced from high-elevation family farms across Colombia, Ethiopia, Guatemala, and Sumatra. We pay up to 40% above fair-trade prices, ensuring our farmer partners can invest in organic cultivation and biodiverse soil health.
+          </p>
+          
+          <div class="craft-points">
+            <div class="craft-point">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Zero Artificial Syrups</span>
+            </div>
+            <div class="craft-point">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>House-Made Almond &amp; Oat</span>
+            </div>
+            <div class="craft-point">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% Compostable Cups</span>
+            </div>
+            <div class="craft-point">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>SCA Certified Baristas</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="about-reserve-btn">
+            Reserve Your Visit
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Menu Section -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <div class="menu-header text-center">
+        <span class="section-tag">Curated Offerings</span>
+        <h2 class="section-title">Explore Our Seasonal Menu</h2>
+        <p class="section-subtitle">
+          Hand-pulled espresso shots, slow cold drips, house signature creations, and freshly baked pastries.
+        </p>
+
+        <!-- Category Filter Buttons -->
+        <div class="menu-filter-container" id="menu-filters">
+          <button class="filter-btn active" data-category="all">All Items</button>
+          <button class="filter-btn" data-category="espresso">Espresso &amp; Hot Brews</button>
+          <button class="filter-btn" data-category="cold">Cold Brew &amp; Iced</button>
+          <button class="filter-btn" data-category="specialty">Signature Drinks</button>
+          <button class="filter-btn" data-category="tea">Artisanal Teas</button>
+          <button class="filter-btn" data-category="bakery">Bakery &amp; Food</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Menu Grid -->
+      <div class="menu-grid" id="menu-grid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Roast & Craft Process Section -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag" style="background: rgba(255, 255, 255, 0.1); color: var(--color-accent);">The Aura Method</span>
+        <h2 class="section-title">The Art of Our Craft</h2>
+        <p class="section-subtitle">
+          Four deliberate steps that transform green coffee cherries into an extraordinary sensory experience.
+        </p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-step-num">01</div>
+          <h4>Ethical Sourcing</h4>
+          <p>We travel directly to volcanic, high-elevation micro-farms to hand-select specialty grade cherries.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step-num">02</div>
+          <h4>Micro-Lot Roasting</h4>
+          <p>Custom curve profiles tailored to each bean's density to highlight delicate florals and deep caramels.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step-num">03</div>
+          <h4>Precision Extraction</h4>
+          <p>Reverse-osmosis mineral-balanced water paired with temperature and flow-rate profile control.</p>
+        </div>
+
+        <div class="process-card">
+          <div class="process-step-num">04</div>
+          <h4>Mindful Serving</h4>
+          <p>Presented in handmade ceramic vessels to preserve aromatic nuances from first sip to last drop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Reviews Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="text-center">
+        <span class="section-tag">Community Love</span>
+        <h2 class="section-title">What Our Guests Are Saying</h2>
+        <p class="section-subtitle">
+          We pride ourselves on community, welcoming hospitality, and coffees that speak for themselves.
+        </p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-quote">
+              "The Honey Cinnamon Oat Latte is easily the best drink in the city. The space is calm, filled with natural light, and the baristas genuinely care about the craft."
+            </p>
+          </div>
+          <div class="reviewer-meta">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" alt="Elena Rostova" class="reviewer-avatar">
+            <div class="reviewer-info">
+              <h5>Elena Rostova</h5>
+              <p>Coffee Connoisseur • Regular</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-quote">
+              "Their single-origin pour-overs opened my eyes to how fruity and bright coffee can taste without adding anything. Plus, their cardamom bun is simply legendary."
+            </p>
+          </div>
+          <div class="reviewer-meta">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" alt="Marcus Chen" class="reviewer-avatar">
+            <div class="reviewer-info">
+              <h5>Marcus Chen</h5>
+              <p>Food &amp; Lifestyle Critic</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-quote">
+              "The quiet garden patio out back is my favorite remote work escape. Fast Wi-Fi, incredible nitro cold brew on tap, and the warmest staff you'll ever meet."
+            </p>
+          </div>
+          <div class="reviewer-meta">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" alt="Sophia Al-Mansoor" class="reviewer-avatar">
+            <div class="reviewer-info">
+              <h5>Sophia Al-Mansoor</h5>
+              <p>Architect &amp; Designer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit, Hours & Atmosphere Section -->
+  <section class="visit-section" id="visit">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="hours-card">
+          <div class="hours-header">
+            <div>
+              <span class="section-tag" style="margin-bottom: 0.5rem;">Hours &amp; Location</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--color-primary);">Plan Your Visit</h3>
+            </div>
+            <div class="live-pill" id="card-live-pill">
+              <span class="live-dot" id="card-status-dot"></span>
+              <span id="card-status-text">Open</span>
+            </div>
+          </div>
+
+          <div class="hours-list" id="hours-list">
+            <div class="hour-row" data-day="1">
+              <span>Monday</span>
+              <span>7:00 AM – 8:00 PM</span>
+            </div>
+            <div class="hour-row" data-day="2">
+              <span>Tuesday</span>
+              <span>7:00 AM – 8:00 PM</span>
+            </div>
+            <div class="hour-row" data-day="3">
+              <span>Wednesday</span>
+              <span>7:00 AM – 8:00 PM</span>
+            </div>
+            <div class="hour-row" data-day="4">
+              <span>Thursday</span>
+              <span>7:00 AM – 8:00 PM</span>
+            </div>
+            <div class="hour-row" data-day="5">
+              <span>Friday</span>
+              <span>7:00 AM – 9:00 PM</span>
+            </div>
+            <div class="hour-row" data-day="6">
+              <span>Saturday</span>
+              <span>8:00 AM – 9:00 PM</span>
+            </div>
+            <div class="hour-row" data-day="0">
+              <span>Sunday</span>
+              <span>8:00 AM – 7:00 PM</span>
+            </div>
+          </div>
+
+          <div class="location-details">
+            <div class="location-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span>442 Roaster's Way, Arts District, Portland, OR</span>
+            </div>
+            <div class="location-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>(503) 555-0194</span>
+            </div>
+            <div class="location-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>hello@auraandroast.com</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" style="width: 100%;" id="visit-reserve-btn">
+            Book a Table or Event
+          </button>
+        </div>
+
+        <div class="atmosphere-visual">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=80" alt="Aura and Roast cafe interior" class="cafe-atmosphere-img" loading="lazy">
+        </div>
+      </div>
+
+      <!-- Newsletter Callout Banner -->
+      <div class="newsletter-banner">
+        <div class="newsletter-text">
+          <h3>Join The Roaster's Circle</h3>
+          <p>Receive weekly tasting notes, seasonal release alerts, and 15% off your first coffee bag.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" placeholder="Enter your email address" required aria-label="Email address for newsletter">
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+            </div>
+            <span>Aura &amp; Roast</span>
+          </div>
+          <p>
+            Dedicated to the artisanal craft of small-batch roasting, honoring coffee origins, and fostering slow conversations.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="X / Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#menu">Our Menu</a></li>
+            <li><a href="#about">Philosophy &amp; Farms</a></li>
+            <li><a href="#process">Roasting Process</a></li>
+            <li><a href="#visit">Locations &amp; Hours</a></li>
+            <li><a href="#reviews">Guest Stories</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Offerings</h4>
+          <ul>
+            <li><a href="#menu">Whole Bean Subscriptions</a></li>
+            <li><a href="#menu">Cold Brew Growlers</a></li>
+            <li><a href="#menu">Home Brewing Gear</a></li>
+            <li><a href="#menu">Pastry Catering</a></li>
+            <li><a href="#visit">Private Coffee Cuppings</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Working Hours</h4>
+          <ul>
+            <li>Mon – Thu: 7am – 8pm</li>
+            <li>Friday: 7am – 9pm</li>
+            <li>Saturday: 8am – 9pm</li>
+            <li>Sunday: 8am – 7pm</li>
+            <li style="color: var(--color-accent); font-weight: 600; margin-top: 0.5rem;">Holiday hours may vary</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura &amp; Roast Artisanal Coffee Roasters. All rights reserved.</p>
+        <p>Built with passion for specialty coffee lovers.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span>Your Order</span>
+      </h3>
+      <button class="drawer-close-btn" id="close-cart-btn" aria-label="Close Cart">&times;</button>
+    </div>
+
+    <div class="cart-items-list" id="cart-items-list">
+      <!-- Items dynamically populated by app.js -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span id="cart-subtotal">$0.00</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>Estimated Tax (8%)</span>
+        <span id="cart-tax">$0.00</span>
+      </div>
+      <div class="cart-summary-line total">
+        <span>Total</span>
+        <span id="cart-total">$0.00</span>
+      </div>
+      <button class="btn btn-primary cart-checkout-btn" id="checkout-btn">
+        Checkout &amp; Order Ahead
+      </button>
+    </div>
+  </aside>
+
+  <!-- Table Reservation Modal (<dialog>) -->
+  <dialog class="reservation-modal" id="reservation-modal">
+    <div class="modal-header">
+      <h3>Reserve a Table or Tasting</h3>
+      <button class="modal-close-btn" id="close-reserve-btn" aria-label="Close Reservation Modal">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="reservation-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-name">Full Name *</label>
+            <input type="text" id="res-name" class="form-control" placeholder="e.g. John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="res-phone">Phone Number *</label>
+            <input type="tel" id="res-phone" class="form-control" placeholder="(555) 000-0000" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="res-email">Email Address *</label>
+          <input type="email" id="res-email" class="form-control" placeholder="john@example.com" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-date">Date *</label>
+            <input type="date" id="res-date" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="res-time">Time *</label>
+            <select id="res-time" class="form-control" required>
+              <option value="">Select Time Slot</option>
+              <option value="08:00 AM">8:00 AM - Morning Quiet</option>
+              <option value="10:00 AM">10:00 AM - Mid-Morning</option>
+              <option value="12:00 PM">12:00 PM - Lunch &amp; Brew</option>
+              <option value="02:30 PM">2:30 PM - Afternoon Chill</option>
+              <option value="05:00 PM">5:00 PM - Sunset Cupping</option>
+              <option value="06:30 PM">6:30 PM - Evening Roast</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="res-guests">Number of Guests</label>
+          <select id="res-guests" class="form-control">
+            <option value="1">1 Person (Solo Work / Tasting)</option>
+            <option value="2" selected>2 People (Cozy Table)</option>
+            <option value="3">3 People</option>
+            <option value="4">4 People</option>
+            <option value="6+">6+ People (Group Lounge)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Seating Preference</label>
+          <div class="seating-options">
+            <label class="seating-chip">
+              <input type="radio" name="seating" value="Lounge" checked>
+              <span>🛋️ Indoor Lounge</span>
+            </label>
+            <label class="seating-chip">
+              <input type="radio" name="seating" value="Patio">
+              <span>🌿 Sunlit Patio</span>
+            </label>
+            <label class="seating-chip">
+              <input type="radio" name="seating" value="Bar">
+              <span>☕ Espresso Bar</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="res-notes">Special Requests (Optional)</label>
+          <textarea id="res-notes" class="form-control" rows="2" placeholder="e.g. High-chair needed, quiet corner for meetings..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+          Confirm Reservation
+        </button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
