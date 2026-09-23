@@ -22,7 +22,7 @@
       <div class="top-bar-info">
         <div class="top-bar-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <span>442 Roaster's Way, Arts District</span>
+          <span id="store-address-top">442 Roaster's Way, Arts District</span>
         </div>
         <div class="top-bar-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -50,7 +50,7 @@
             <line x1="14" y1="1" x2="14" y2="4"></line>
           </svg>
         </div>
-        <span>Aura &amp; Roast</span>
+        <span id="store-brand-title">Aura &amp; Roast</span>
       </a>
 
       <!-- Desktop & Mobile Nav Links -->
@@ -61,6 +61,7 @@
         <a href="#process" class="nav-link">Craft</a>
         <a href="#reviews" class="nav-link">Reviews</a>
         <a href="#visit" class="nav-link">Visit Us</a>
+        <a href="admin.html" class="nav-link" style="color: var(--color-secondary);">Admin</a>
       </nav>
 
       <!-- Action Buttons -->
@@ -94,13 +95,13 @@
     <div class="container">
       <div class="hero-grid">
         <div class="hero-content">
-          <div class="hero-pill">
-            <span>✨</span> Daily Special: Ethiopian Yirgacheffe Natural Process
+          <div class="hero-pill" id="hero-daily-special-wrapper">
+            <span id="hero-daily-special-text">✨ Daily Special: Ethiopian Yirgacheffe Natural Process</span>
           </div>
-          <h1 class="hero-title">
-            Crafted with passion, <span>brewed</span> to your perfection.
+          <h1 class="hero-title" id="hero-title-text">
+            Crafted with passion of heart, <span>brewed</span> to your perfection.
           </h1>
-          <p class="hero-desc">
+          <p class="hero-desc" id="hero-desc-text">
             Welcome to Aura &amp; Roast. We partner directly with sustainable high-altitude farmers to handcraft small-batch roasts, sensory pour-overs, and unforgettable coffee moments in the heart of the city.
           </p>
           <div class="hero-actions">
@@ -422,15 +423,15 @@
           <div class="location-details">
             <div class="location-item">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              <span>442 Roaster's Way, Arts District, Portland, OR</span>
+              <span id="store-address-visit">442 Roaster's Way, Arts District, Portland, OR</span>
             </div>
             <div class="location-item">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <span>(503) 555-0194</span>
+              <span id="store-phone-visit">(503) 555-0194</span>
             </div>
             <div class="location-item">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <span>hello@auraandroast.com</span>
+              <span id="store-email-visit">hello@auraandroast.com</span>
             </div>
           </div>
 
@@ -508,20 +509,20 @@
         </div>
 
         <div class="footer-col">
-          <h4>Working Hours</h4>
+          <h4>Staff &amp; Operations</h4>
           <ul>
+            <li><a href="admin.html" style="color: var(--color-accent); font-weight: 600;">🔒 Staff Admin Portal</a></li>
             <li>Mon – Thu: 7am – 8pm</li>
             <li>Friday: 7am – 9pm</li>
             <li>Saturday: 8am – 9pm</li>
             <li>Sunday: 8am – 7pm</li>
-            <li style="color: var(--color-accent); font-weight: 600; margin-top: 0.5rem;">Holiday hours may vary</li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
         <p>&copy; 2026 Aura &amp; Roast Artisanal Coffee Roasters. All rights reserved.</p>
-        <p>Built with passion for specialty coffee lovers.</p>
+        <p><a href="admin.html" style="text-decoration: underline;">Admin Panel</a> • Built with passion for specialty coffee lovers.</p>
       </div>
     </div>
   </footer>
@@ -647,7 +648,8 @@
   <!-- Toast Notification Container -->
   <div class="toast-container" id="toast-container"></div>
 
-  <!-- Main JavaScript Logic -->
+  <!-- Shared Data Store & Main JavaScript Logic -->
+  <script src="shared-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

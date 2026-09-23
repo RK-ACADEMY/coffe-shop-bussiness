@@ -1,135 +1,10 @@
 /**
  * Aura & Roast Artisanal Coffee - Main Application Logic
+ * Integrates with shared-data.js (CoffeeStore) for live customization sync.
  */
 
 // ==========================================================================
-// 1. Menu Item Data Store
-// ==========================================================================
-const MENU_ITEMS = [
-  {
-    id: 'item-1',
-    name: 'Single-Origin Pour Over',
-    category: 'espresso',
-    price: 5.75,
-    description: 'Rotating micro-lot beans brewed via Chemex or V60 with precise water temp & ratio.',
-    badge: 'Roaster Pick',
-    flavorTags: ['Floral', 'Bergamot', 'Light Roast'],
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-2',
-    name: 'Velvet Flat White',
-    category: 'espresso',
-    price: 4.85,
-    description: 'Double ristretto shot crowned with micro-foamed whole or oat milk.',
-    badge: 'Popular',
-    flavorTags: ['Caramel', 'Silky', 'Balanced'],
-    image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-3',
-    name: 'Spanish Cortado',
-    category: 'espresso',
-    price: 4.25,
-    description: 'Equal parts house espresso and lightly textured steamed milk in a Gibraltar glass.',
-    badge: 'Classic',
-    flavorTags: ['Cocoa', 'Nutty', 'Smooth'],
-    image: 'https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-4',
-    name: 'Honey Lavender Latte',
-    category: 'specialty',
-    price: 6.25,
-    description: 'Wildflower local honey infused with French lavender, espresso, and creamy steamed oat milk.',
-    badge: 'Signature',
-    flavorTags: ['Floral', 'Sweet Honey', 'Aromatic'],
-    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-5',
-    name: 'Smoked Cardamom Cappuccino',
-    category: 'specialty',
-    price: 5.95,
-    description: 'Freshly ground green cardamom, raw turbinado sugar, and a velvety espresso head.',
-    badge: 'Seasonal',
-    flavorTags: ['Warm Spice', 'Rich', 'Smoky'],
-    image: 'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-6',
-    name: 'Nitro Cold Brew on Tap',
-    category: 'cold',
-    price: 5.50,
-    description: '18-hour cold steeped Colombian beans infused with nitrogen for a Guinness-like cascade and creamy mouthfeel.',
-    badge: 'On Tap',
-    flavorTags: ['Dark Chocolate', 'Ultra Smooth', 'Bold'],
-    image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-7',
-    name: 'Vanilla Sweet Cloud Cold Brew',
-    category: 'cold',
-    price: 5.00,
-    description: 'Slow-steeped iced coffee topped with a whipped Madagascar vanilla cold foam cap.',
-    badge: 'Bestseller',
-    flavorTags: ['Bourbon Vanilla', 'Creamy', 'Chilled'],
-    image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-8',
-    name: 'Espresso Tonic Spritz',
-    category: 'cold',
-    price: 5.80,
-    description: 'Double espresso pulled directly over artisanal botanical tonic, ice, and dehydrated grapefruit.',
-    badge: 'Refreshing',
-    flavorTags: ['Citrus', 'Effervescent', 'Crisp'],
-    image: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-9',
-    name: 'Ceremonial Matcha Latte',
-    category: 'tea',
-    price: 6.40,
-    description: 'First-harvest Uji matcha whisked to order with warm oat milk and touch of maple.',
-    badge: 'Organic',
-    flavorTags: ['Umami', 'Earthy', 'Antioxidant'],
-    image: 'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-10',
-    name: 'Spiced Golden Chai Elixir',
-    category: 'tea',
-    price: 5.60,
-    description: 'Slow-simmered Assam black tea with ginger, whole cloves, star anise, and organic honey.',
-    badge: 'House Blend',
-    flavorTags: ['Spicy', 'Comforting', 'Sweet'],
-    image: 'https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-11',
-    name: 'Brown Butter Almond Croissant',
-    category: 'bakery',
-    price: 4.95,
-    description: 'Twice-baked butter croissant filled with frangipane cream and toasted sliced almonds.',
-    badge: 'Baked Daily',
-    flavorTags: ['Nutty', 'Flaky', 'Fresh'],
-    image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80'
-  },
-  {
-    id: 'item-12',
-    name: 'Avocado Heirloom Sourdough Tartine',
-    category: 'bakery',
-    price: 8.50,
-    description: 'Grilled country sourdough, smashed Haas avocado, heirloom cherry tomatoes, dukkah, microgreens.',
-    badge: 'Chef Favorite',
-    flavorTags: ['Savory', 'Plant-Based', 'Crispy'],
-    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80'
-  }
-];
-
-// ==========================================================================
-// 2. State & Persistence
+// 1. State & Persistence
 // ==========================================================================
 let cart = [];
 try {
@@ -142,7 +17,7 @@ try {
 }
 
 // ==========================================================================
-// 3. DOM Elements Cache
+// 2. DOM Elements Cache
 // ==========================================================================
 const menuGrid = document.getElementById('menu-grid');
 const filterButtons = document.querySelectorAll('.filter-btn');
@@ -178,39 +53,85 @@ const toastContainer = document.getElementById('toast-container');
 // Newsletter
 const newsletterForm = document.getElementById('newsletter-form');
 
+// Active category filter state
+let currentCategory = 'all';
+
+// ==========================================================================
+// 3. Dynamic Store Settings Applier
+// ==========================================================================
+function applyStoreSettings() {
+  if (typeof CoffeeStore === 'undefined') return;
+  const settings = CoffeeStore.getStoreSettings();
+
+  const brandTitle = document.getElementById('store-brand-title');
+  const specialText = document.getElementById('hero-daily-special-text');
+  const heroTitle = document.getElementById('hero-title-text');
+  const heroDesc = document.getElementById('hero-desc-text');
+  const addrTop = document.getElementById('store-address-top');
+  const addrVisit = document.getElementById('store-address-visit');
+  const phoneVisit = document.getElementById('store-phone-visit');
+  const emailVisit = document.getElementById('store-email-visit');
+
+  if (brandTitle && settings.storeName) brandTitle.textContent = settings.storeName;
+  if (specialText && settings.dailySpecial) specialText.textContent = settings.dailySpecial;
+  if (heroTitle && settings.heroTitle) heroTitle.innerHTML = settings.heroTitle;
+  if (heroDesc && settings.heroDesc) heroDesc.textContent = settings.heroDesc;
+  if (addrTop && settings.address) addrTop.textContent = settings.address;
+  if (addrVisit && settings.address) addrVisit.textContent = settings.address;
+  if (phoneVisit && settings.phone) phoneVisit.textContent = settings.phone;
+  if (emailVisit && settings.email) emailVisit.textContent = settings.email;
+}
+
 // ==========================================================================
 // 4. Menu Rendering & Filtering
 // ==========================================================================
 function renderMenu(category = 'all') {
   if (!menuGrid) return;
+  currentCategory = category;
   
   menuGrid.innerHTML = '';
   
+  const allItems = typeof CoffeeStore !== 'undefined' ? CoffeeStore.getMenuItems() : [];
   const filtered = category === 'all' 
-    ? MENU_ITEMS 
-    : MENU_ITEMS.filter(item => item.category === category);
+    ? allItems 
+    : allItems.filter(item => item.category === category);
+
+  if (filtered.length === 0) {
+    menuGrid.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--color-text-muted);">
+        <p style="font-size: 1.1rem; font-weight: 600;">No items found in this category.</p>
+        <p style="font-size: 0.9rem;">Check back soon or explore our other seasonal offerings.</p>
+      </div>
+    `;
+    return;
+  }
 
   filtered.forEach(item => {
+    const isAvailable = item.available !== false;
     const card = document.createElement('article');
     card.className = 'menu-card';
     card.setAttribute('data-id', item.id);
+    if (!isAvailable) {
+      card.style.opacity = '0.7';
+    }
     
     card.innerHTML = `
       <div class="menu-card-img-wrapper">
-        <img src="${item.image}" alt="${item.name}" class="menu-card-img" loading="lazy">
+        <img src="${item.image || 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80'}" alt="${item.name}" class="menu-card-img" loading="lazy">
         ${item.badge ? `<span class="menu-badge">${item.badge}</span>` : ''}
+        ${!isAvailable ? `<span class="menu-badge" style="background:#b91c1c; right:12px; left:auto;">Sold Out</span>` : ''}
       </div>
       <div class="menu-card-body">
         <div class="menu-card-header">
           <h3 class="menu-item-title">${item.name}</h3>
-          <span class="menu-item-price">$${item.price.toFixed(2)}</span>
+          <span class="menu-item-price">$${Number(item.price).toFixed(2)}</span>
         </div>
-        <p class="menu-item-desc">${item.description}</p>
+        <p class="menu-item-desc">${item.description || ''}</p>
         <div class="menu-card-footer">
           <div class="flavor-tags">
-            ${item.flavorTags.map(tag => `<span class="flavor-tag">${tag}</span>`).join('')}
+            ${(item.flavorTags || []).map(tag => `<span class="flavor-tag">${tag}</span>`).join('')}
           </div>
-          <button class="add-cart-btn" aria-label="Add ${item.name} to order" data-id="${item.id}">
+          <button class="add-cart-btn" aria-label="Add ${item.name} to order" data-id="${item.id}" ${!isAvailable ? 'disabled style="background:#ccc; cursor:not-allowed;"' : ''}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
           </button>
         </div>
@@ -221,7 +142,7 @@ function renderMenu(category = 'all') {
   });
 
   // Attach click listeners to card "add to cart" buttons
-  const addButtons = menuGrid.querySelectorAll('.add-cart-btn');
+  const addButtons = menuGrid.querySelectorAll('.add-cart-btn:not([disabled])');
   addButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -242,7 +163,7 @@ filterButtons.forEach(btn => {
 });
 
 // ==========================================================================
-// 5. Cart Logic & Drawer
+// 5. Cart Logic & Order Ahead
 // ==========================================================================
 function saveCart() {
   try {
@@ -253,8 +174,9 @@ function saveCart() {
 }
 
 function addToCart(itemId) {
-  const product = MENU_ITEMS.find(p => p.id === itemId);
-  if (!product) return;
+  const allItems = typeof CoffeeStore !== 'undefined' ? CoffeeStore.getMenuItems() : [];
+  const product = allItems.find(p => p.id === itemId);
+  if (!product || product.available === false) return;
 
   const existingItem = cart.find(item => item.id === itemId);
   if (existingItem) {
@@ -341,7 +263,7 @@ function updateCartUI() {
       <img src="${item.image}" alt="${item.name}" class="cart-item-img">
       <div class="cart-item-details">
         <div class="cart-item-title">${item.name}</div>
-        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+        <div class="cart-item-price">$${Number(item.price).toFixed(2)}</div>
         <div class="cart-item-controls">
           <div class="qty-stepper">
             <button class="qty-btn" aria-label="Decrease quantity" data-id="${item.id}" data-action="dec">-</button>
@@ -405,15 +327,28 @@ if (heroOrderBtn) {
   });
 }
 
-// Checkout simulation
+// Checkout simulation synced with Admin Orders
 if (checkoutBtn) {
   checkoutBtn.addEventListener('click', () => {
     if (cart.length === 0) return;
     const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const totalAmount = cartTotalEl ? cartTotalEl.textContent : '';
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const grandTotal = subtotal * 1.08;
+    const orderId = `ORD-${Math.floor(1000 + Math.random() * 9000)}`;
     
-    // Simulate order placement
-    showToast(`Order confirmed! ${totalCount} items (${totalAmount}) placed for pickup.`, 'success');
+    // Save to shared store for Admin portal visibility
+    if (typeof CoffeeStore !== 'undefined') {
+      CoffeeStore.addOrder({
+        id: orderId,
+        customerName: 'Pickup Guest',
+        timestamp: new Date().toISOString(),
+        items: cart.map(i => ({ name: i.name, quantity: i.quantity, price: i.price })),
+        total: grandTotal,
+        status: 'Pending'
+      });
+    }
+
+    showToast(`Order #${orderId} confirmed! ${totalCount} items ($${grandTotal.toFixed(2)}) placed for counter pickup.`, 'success');
     cart = [];
     saveCart();
     updateCartUI();
@@ -426,7 +361,6 @@ if (checkoutBtn) {
 // ==========================================================================
 function openReservation() {
   if (reservationModal) {
-    // Set min date to today
     const today = new Date().toISOString().split('T')[0];
     if (resDateInput) {
       resDateInput.min = today;
@@ -447,7 +381,6 @@ if (aboutReserveBtn) aboutReserveBtn.addEventListener('click', openReservation);
 if (visitReserveBtn) visitReserveBtn.addEventListener('click', openReservation);
 if (closeReserveBtn) closeReserveBtn.addEventListener('click', closeReservation);
 
-// Close on backdrop click
 if (reservationModal) {
   reservationModal.addEventListener('click', (e) => {
     const dialogDimensions = reservationModal.getBoundingClientRect();
@@ -466,10 +399,32 @@ if (reservationForm) {
   reservationForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('res-name')?.value || 'Guest';
+    const phone = document.getElementById('res-phone')?.value || '';
+    const email = document.getElementById('res-email')?.value || '';
     const guests = document.getElementById('res-guests')?.value || '2';
     const date = document.getElementById('res-date')?.value || 'Today';
     const time = document.getElementById('res-time')?.value || 'Selected time';
+    const seating = document.querySelector('input[name="seating"]:checked')?.value || 'Lounge';
+    const notes = document.getElementById('res-notes')?.value || '';
     
+    const resId = `RES-${Math.floor(2000 + Math.random() * 8000)}`;
+
+    // Save to shared store for Admin portal
+    if (typeof CoffeeStore !== 'undefined') {
+      CoffeeStore.addReservation({
+        id: resId,
+        name,
+        phone,
+        email,
+        date,
+        time,
+        guests,
+        seating,
+        notes,
+        status: 'Confirmed'
+      });
+    }
+
     showToast(`Table reserved for ${name} (${guests} guests) on ${date} at ${time}!`, 'success');
     reservationModal.close();
     reservationForm.reset();
@@ -480,40 +435,38 @@ if (reservationForm) {
 // 7. Dynamic Business Hours & Live Status
 // ==========================================================================
 function calculateStoreStatus() {
+  if (typeof CoffeeStore === 'undefined') return;
+  const hours = CoffeeStore.getStoreHours();
   const now = new Date();
   const day = now.getDay(); // 0 = Sun, 1 = Mon ... 6 = Sat
   const hour = now.getHours();
   const minute = now.getMinutes();
   const currentTime = hour + minute / 60;
 
-  // Schedule definition
-  // Mon-Thu (1-4): 7:00 AM (7.0) to 8:00 PM (20.0)
-  // Fri (5): 7:00 AM (7.0) to 9:00 PM (21.0)
-  // Sat (6): 8:00 AM (8.0) to 9:00 PM (21.0)
-  // Sun (0): 8:00 AM (8.0) to 7:00 PM (19.0)
-  let openTime = 7.0;
-  let closeTime = 20.0;
-  let closeLabel = '8:00 PM';
-  let nextOpenLabel = '7:00 AM tomorrow';
+  const todaySchedule = hours.find(h => h.day === day) || hours[0];
 
-  if (day === 5) {
-    openTime = 7.0;
-    closeTime = 21.0;
-    closeLabel = '9:00 PM';
-    nextOpenLabel = '8:00 AM tomorrow';
-  } else if (day === 6) {
-    openTime = 8.0;
-    closeTime = 21.0;
-    closeLabel = '9:00 PM';
-    nextOpenLabel = '8:00 AM tomorrow';
-  } else if (day === 0) {
-    openTime = 8.0;
-    closeTime = 19.0;
-    closeLabel = '7:00 PM';
-    nextOpenLabel = '7:00 AM tomorrow';
+  let isOpen = false;
+  let closeLabel = '';
+  let nextOpenLabel = '';
+
+  if (!todaySchedule.isClosed) {
+    const [openH, openM] = todaySchedule.open.split(':').map(Number);
+    const [closeH, closeM] = todaySchedule.close.split(':').map(Number);
+    const openTime = openH + (openM || 0) / 60;
+    const closeTime = closeH + (closeM || 0) / 60;
+
+    isOpen = currentTime >= openTime && currentTime < closeTime;
+    closeLabel = formatTimeAmPm(todaySchedule.close);
   }
 
-  const isOpen = currentTime >= openTime && currentTime < closeTime;
+  // Find next open day
+  const nextDay = (day + 1) % 7;
+  const nextSchedule = hours.find(h => h.day === nextDay);
+  if (nextSchedule && !nextSchedule.isClosed) {
+    nextOpenLabel = `${formatTimeAmPm(nextSchedule.open)} tomorrow`;
+  } else {
+    nextOpenLabel = 'soon';
+  }
 
   // Update Top Bar Pill
   const liveDot = document.getElementById('live-status-dot');
@@ -528,32 +481,48 @@ function calculateStoreStatus() {
     if (cardText) cardText.textContent = `Open Now • Closes at ${closeLabel}`;
   } else {
     if (liveDot) liveDot.className = 'live-dot closed';
-    if (liveText) liveText.textContent = `Closed • Opens at ${nextOpenLabel}`;
+    if (liveText) liveText.textContent = todaySchedule.isClosed ? `Closed Today • Opens ${nextOpenLabel}` : `Closed • Opens at ${nextOpenLabel}`;
     if (cardDot) cardDot.className = 'live-dot closed';
-    if (cardText) cardText.textContent = `Closed • Opens at ${nextOpenLabel}`;
+    if (cardText) cardText.textContent = todaySchedule.isClosed ? `Closed Today` : `Closed • Opens at ${nextOpenLabel}`;
   }
 
-  // Highlight current day in hours list
-  const hourRows = document.querySelectorAll('.hour-row');
-  hourRows.forEach(row => {
-    if (parseInt(row.getAttribute('data-day'), 10) === day) {
-      row.classList.add('today');
-      const daySpan = row.firstElementChild;
-      if (daySpan && !daySpan.querySelector('.today-badge')) {
-        const badge = document.createElement('span');
-        badge.className = 'today-badge';
-        badge.style.fontSize = '0.72rem';
-        badge.style.background = 'var(--color-accent-light)';
-        badge.style.color = 'var(--color-primary)';
-        badge.style.padding = '2px 8px';
-        badge.style.borderRadius = '12px';
-        badge.style.marginLeft = '8px';
-        badge.style.fontWeight = '700';
-        badge.textContent = 'Today';
-        daySpan.appendChild(badge);
-      }
-    }
-  });
+  // Render & highlight hours list dynamically
+  const hoursList = document.getElementById('hours-list');
+  if (hoursList) {
+    hoursList.innerHTML = '';
+    // Display in order Mon-Sun (1, 2, 3, 4, 5, 6, 0)
+    const sortedDays = [1, 2, 3, 4, 5, 6, 0];
+    sortedDays.forEach(d => {
+      const schedule = hours.find(h => h.day === d);
+      if (!schedule) return;
+
+      const isToday = schedule.day === day;
+      const row = document.createElement('div');
+      row.className = `hour-row ${isToday ? 'today' : ''}`;
+      row.setAttribute('data-day', schedule.day);
+
+      const hoursDisplay = schedule.isClosed 
+        ? 'Closed' 
+        : `${formatTimeAmPm(schedule.open)} – ${formatTimeAmPm(schedule.close)}`;
+
+      row.innerHTML = `
+        <span>
+          ${schedule.name}
+          ${isToday ? `<span class="today-badge" style="font-size:0.72rem; background:var(--color-accent-light); color:var(--color-primary); padding:2px 8px; border-radius:12px; margin-left:8px; font-weight:700;">Today</span>` : ''}
+        </span>
+        <span>${hoursDisplay}</span>
+      `;
+      hoursList.appendChild(row);
+    });
+  }
+}
+
+function formatTimeAmPm(time24) {
+  if (!time24) return '';
+  const [h, m] = time24.split(':').map(Number);
+  const period = h >= 12 ? 'PM' : 'AM';
+  const hour12 = h % 12 || 12;
+  return `${hour12}:${m < 10 ? '0' + m : m} ${period}`;
 }
 
 // ==========================================================================
@@ -564,7 +533,6 @@ if (menuToggleBtn && navLinks) {
     navLinks.classList.toggle('mobile-open');
   });
 
-  // Close mobile nav when clicking a link
   navLinks.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('mobile-open');
@@ -604,12 +572,10 @@ function showToast(message, type = 'info') {
 
   toastContainer.appendChild(toast);
 
-  // Trigger animation
   requestAnimationFrame(() => {
     toast.classList.add('show');
   });
 
-  // Remove after 3.8s
   setTimeout(() => {
     toast.classList.remove('show');
     setTimeout(() => {
@@ -633,9 +599,25 @@ if (newsletterForm) {
 }
 
 // ==========================================================================
-// 11. Initial Application Setup
+// 11. Cross-Tab Synchronization via Storage Events
+// ==========================================================================
+window.addEventListener('storage', (e) => {
+  if (e.key === 'aura_menu_items') {
+    renderMenu(currentCategory);
+  }
+  if (e.key === 'aura_store_settings') {
+    applyStoreSettings();
+  }
+  if (e.key === 'aura_store_hours') {
+    calculateStoreStatus();
+  }
+});
+
+// ==========================================================================
+// 12. Initial Application Setup
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
+  applyStoreSettings();
   renderMenu('all');
   updateCartUI();
   calculateStoreStatus();
